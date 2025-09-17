@@ -1,52 +1,64 @@
-# 📂 Resume Screening using NLP
+# 🧑‍💼 Resume Screening Using NLP
 
-This project is part of my Elevvo Internship (NLP Track).  
-The goal is to build a system that automatically screens and ranks resumes against job descriptions.
-
----
-
-## 📌 Project Steps
-
-Step 1: Install and Import Libraries  
-Installed SentenceTransformers, Scikit-learn, and Pandas.
-
-Step 2: Load Dataset  
-Loaded resumes and job descriptions from CSV files.
-
-Step 3: Load Embedding Model  
-Used all-MiniLM-L6-v2 model to generate semantic embeddings.
-
-Step 4: Encode Texts  
-Converted resumes and job descriptions into embeddings.
-
-Step 5: Compute Similarity  
-Calculated cosine similarity to measure resume-job match scores.
-
-Step 6: Rank Resumes  
-Ranked resumes for each job and selected the top matches.
-
-Step 7: Example Output  
-Displayed the top resumes with match scores and excerpts.
+## 📌 Project Overview
+This project implements an AI-powered resume screening system using Natural Language Processing (NLP).  
+The system compares resumes against job descriptions and ranks them based on their semantic similarity.  
+It leverages transformer-based embeddings to understand the meaning of text rather than just keyword matching.
 
 ---
 
-## 📊 Example Results
-🔹 Job: Data Analyst
-resume_id   match_score   resume_excerpt
-CV_12       87.45         Experienced data analyst skilled in SQL, Python, and Tableau…
-CV_07       83.20         Data science graduate with strong background in statistics…
-CV_19       81.50         Business intelligence specialist with 3 years of experience…
+## 🎯 Objectives
+- Preprocess resumes and job descriptions.
+- Generate embeddings using a pre-trained Sentence Transformer model.
+- Compute similarity scores between resumes and jobs.
+- Rank resumes for each job and display the top matches.
+- Provide excerpts from resumes as justifications for the match.
 
 ---
 
-## 🛠️ Tools & Libraries Used
+## 📊 Dataset
+Two datasets were used:
+1. UpdatedResumeDataSet.csv → contains candidate resumes with a Category and Resume text.  
+2. job_descriptions_sample.csv → sampled job descriptions containing fields like Job Title and Job Description.
 
+> ⚡ Note: A sampled job dataset was used instead of the full one to reduce runtime in Google Colab.
+
+---
+
+## 🛠️ Tools & Libraries
 - Python  
-- Pandas  
-- SentenceTransformers  
-- Scikit-learn  
+- Pandas → Data loading & processing  
+- Sentence Transformers → Pre-trained model (`all-MiniLM-L6-v2`) for embeddings  
+- Scikit-learn → Cosine similarity computation  
 
 ---
 
+## 📂 Project Structure
+```plaintext
+├── Resume_Screening.ipynb   # Main notebook
+├── UpdatedResumeDataSet.csv # Resume dataset
+├── job_descriptions_sample.csv # Job descriptions sample dataset
+└── README.md                # Project documentation
+🚀 Workflow
+ 1. Load datasets → Resumes & Jobs.
+ 2. Inspect columns → Identify useful fields (Resume, Job Description, Job Title).
+ 3. Load transformer model → all-MiniLM-L6-v2.
+ 4. Convert text to embeddings → Numerical vector representation.
+ 5. Compute cosine similarity → Measure how close resumes are to job descriptions.
+ 6. Rank resumes → Select top 3 matches per job.
+ 7. Display results → Show job title, resume ID, match score, and resume excerpt.
+📈 Sample Results
 
-pip install sentence-transformers scikit-learn pandas
+Example output for two job descriptions:
+
+🔹 Job: Digital Marketing Specialist
+ resume_id  match_score  resume_excerpt
+       259        26.84  Skill Sets: • Multi-tasking • Collaborative • Optimistic Thinking...
+
+🔹 Job: Web Developer
+ resume_id  match_score  resume_excerpt
+       335        47.25  TECHNICAL SKILLS Skills: Java, SQL, PL/SQL, C, C++, BootStrap...
+🧪 Future Improvements
+ • Fine-tune the model on resume-job matching tasks.
+ • Extract named entities (skills, experience) from resumes using NER.
+ • Build a Streamlit web app to upload resumes and see matching results in real-time.
