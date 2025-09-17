@@ -48,10 +48,5 @@ CV_19       81.50         Business intelligence specialist with 3 years of exper
 
 ---
 
-## 🚀 How to Run the Project
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/resume-screening-nlp.git
 
 pip install sentence-transformers scikit-learn pandas
